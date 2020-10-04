@@ -14,7 +14,16 @@ const store = new Vuex.Store({
       {codigo:"0006",nombre:"Forza Horizon 4", stock: 100 , precio: "20000", color: "red", destacado: true}
     ]
   },
-  getters: {},
+  getters: {
+    totalJuegos: state=>{
+      return state.Juegos.length;
+    },
+    JuegosParaVender: state=>{
+      return state.Juegos.filter(juego=>{
+        return juego.stock>0
+      })
+    }
+  },
   mutations: {},
   actions: {}
 });
