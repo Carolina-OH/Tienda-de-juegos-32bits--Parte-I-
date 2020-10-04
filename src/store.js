@@ -22,7 +22,7 @@ const store = new Vuex.Store({
       return state.Juegos.filter(juego=>{
         return juego.stock>0
       })
-    }
+    },
   },
   mutations: {},
   actions: {}

@@ -1,21 +1,29 @@
 <template>
 <div>
     <h1> ventas</h1>
+    <lista :JuegosParaVender="JuegosParaVender"></lista>
 </div>
 </template>
 
 <script>
+import {mapState, mapGetters} from 'vuex';
+import lista from '../components/lista'
 export default {
     name: 'presentación',
     // props: {},
     data: function(){
         return {}
     },
-    // computed: {},
+    computed: {
+        ...mapState(['Juegos']),
+        ...mapGetters(['totalJuegos','JuegosParaVender']),
+    },
     methods: {
         // -- Metodos
     },
-    // components: {},
+     components: {
+         'lista':lista
+     },
 }
 </script>
 
