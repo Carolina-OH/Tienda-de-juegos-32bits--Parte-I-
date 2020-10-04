@@ -1,35 +1,31 @@
 <template>
 <div>
     <div class="filtro">
-    <label>Seleccione código de juego</label>
-    <select>
-    <option></option>
-    </select>
-    <button>Buscar</button>
+        <filtro :Juegos="Juegos"></filtro>
+
     </div>
 </div>
 </template>
 
 <script>
+import {mapState} from 'vuex';
+import filter from '../components/filtro';
 export default {
-    name: 'presentación',
-    props: {    
-        Juegos:{
-            type: Array,
-            required: true,
-    },
-    },
+    name: 'presentacion',
     data: function(){
         return {}
     },
-    // computed: {},
+    computed: {
+          ...mapState(['Juegos'])
+    },
     methods: {
         // -- Metodos
     },
-    // components: {},
+    components: {
+        'filtro':filter,
+    },
 }
 </script>
-
 <style scoped>
     .filtro{
         display:flex;
