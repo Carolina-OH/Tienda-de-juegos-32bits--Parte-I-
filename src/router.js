@@ -24,6 +24,7 @@ export default new Router({
         {
             path:'/busquedas',
             name:'busquedas',
+            //alias:['/search', '/buscar'],
             component:busquedas
         },    
         {

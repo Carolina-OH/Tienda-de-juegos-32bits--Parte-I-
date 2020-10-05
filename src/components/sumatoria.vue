@@ -2,8 +2,8 @@
     <div>
     Listado de ventas registradas: 
     <ul>
-    <li v-for="juego in JuegosParaVender" :key="juego.codigo">
-      <div>Codigo:{{juego.codigo}} - Nombre:{{juego.nombre}} - Precio: ${{juego.precio}} </div>
+    <li v-for="venta in ventas" :key="venta.codigo">
+      <div>Codigo:{{venta.codigo}} - Nombre:{{venta.nombre}} - Precio: ${{venta.precio}} </div>
     </li>
     </ul>
 
@@ -17,6 +17,8 @@ export default {
     props: {
         JuegosParaVender:{
             type:Array,
+        },
+        ventas:{
         }
     },
     data: function(){

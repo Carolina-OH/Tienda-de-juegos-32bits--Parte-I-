@@ -14,6 +14,7 @@ const store = new Vuex.Store({
       {codigo:"0006",nombre:"Forza Horizon 4", stock: 100 , precio: "20000", color: "red", destacado: true}
     ],
     ventas:[],
+    totalGanancias:[]
     },
   getters: {
     totalJuegos: state=>{
@@ -26,7 +27,10 @@ const store = new Vuex.Store({
     },
     totalJuegosstock:(state,getters)=>{
       return getters.JuegosParaVender.length
-    } 
+    },
+    ventasRealizadas: state=>{
+      return state.ventas.length
+    },
 
   },
   mutations: {
@@ -43,7 +47,10 @@ const store = new Vuex.Store({
         nombre: juego.nombre,
         stock:juego.stock,
         precio:juego.precio
-      })
+      }),
+      state.totalGanancias.push(
+        parseInt(juego.precio)
+      )
     }
   },
   actions: {
