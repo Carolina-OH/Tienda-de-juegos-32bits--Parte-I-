@@ -13,7 +13,7 @@
     <div class="filtro">
      <ul>
       <li v-for="juego in Juegos" :key="juego.codigo">
-          <div>{{juego.codigo}}|{{juego.nombre}}|{{juego.stock}}|{{juego.precio}}</div>
+          <div class="lista" :style="{background: juego.color}">{{juego.codigo}}|{{juego.nombre}}|{{juego.stock}}|{{juego.precio}}</div>
      </li>
     </ul>
     </div>
@@ -40,6 +40,7 @@ export default {
         
         return {
             search:'',
+
         }
     },
     // computed: {},
@@ -48,7 +49,7 @@ export default {
       this.$emit("buscar",{
         search_codigo:this.search,
       })
-      }
+      },
     },
     components: {
 

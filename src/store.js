@@ -12,8 +12,9 @@ const store = new Vuex.Store({
       {codigo:"0004",nombre:"Mario Tennis Aces", stock: 100 , precio: "35000", color: "yellow", destacado: false},
       {codigo:"0005",nombre:"Bloodborne", stock: 100 , precio: "10000", color: "blue", destacado: false},
       {codigo:"0006",nombre:"Forza Horizon 4", stock: 100 , precio: "20000", color: "red", destacado: true}
-    ]
-  },
+    ],
+    ventas:[],
+    },
   getters: {
     totalJuegos: state=>{
       return state.Juegos.length;
@@ -23,9 +24,69 @@ const store = new Vuex.Store({
         return juego.stock>0
       })
     },
+    totalJuegosstock:(state,getters)=>{
+      return getters.JuegosParaVender.length
+    } 
+
   },
-  mutations: {},
-  actions: {}
+  mutations: {
+    venderJuego: (state, juego_codigo)=>{
+      state.Juegos.forEach((juego)=>{
+        if(juego.codigo === juego_codigo){
+          juego.stock--
+        }
+      })
+    },
+    registrarVenta:(state, juego)=>{
+      state.ventas.push({
+        codigo:juego.codigo,
+        nombre: juego.nombre,
+        stock:juego.stock,
+        precio:juego.precio
+      })
+    }
+  },
+  actions: {
+    ProcesarVenta({commit,state}, juego_codigo){
+      return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+          let venta_exitosa = false
+          state.Juegos.forEach(juego=>{
+          if(juego.codigo === juego_codigo){
+            //llamo a mutacion
+            commit('venderJuego', juego_codigo)
+            venta_exitosa= true
+          }
+        })
+        if(venta_exitosa){
+          resolve()
+        }
+        else{
+          reject()
+        }
+        }, 2000);
+        
+      })
+    },
+    registrarVenta({commit}, juego){
+      return new Promise((resolve)=>{
+        setTimeout(() => {
+          commit('registrarVenta', juego)
+          resolve()
+        }, 1000);
+      })
+    },
+    async vender({dispatch},juego){
+      try {
+        await dispatch('ProcesarVenta', juego.codigo)
+        await dispatch('registrarVenta', juego)
+        alert("venta procesada")
+        
+      } catch (error) {
+        this.console.log(error);
+      }
+    }
+  },
 });
 
 export default store;

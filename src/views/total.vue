@@ -1,7 +1,10 @@
 <template>
 <div>
-    <h1> total ventas</h1>
+    
+    <h1> TOTAL VENTAS</h1>
+    <div class="total">
     <sumatoria :JuegosParaVender="JuegosParaVender"></sumatoria>
+    </div>
 </div>
 </template>
 
@@ -28,5 +31,19 @@ export default {
 </script>
 
 <style scoped>
+    h1{
+        text-align:center;
+        margin-top:70px;
+        margin-bottom:30px;
+    }
+     .total{
+        text-align:left;
+        display:flex;
+        flex-direction:column;
+        width:800px;
+        justify-content:center;
+        margin:auto ;
+        margin-top:50px;
     
+    }
 </style>

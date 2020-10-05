@@ -1,7 +1,9 @@
 <template>
 <div>
+    <div class="ventas">
     <h1> ventas</h1>
-    <lista :JuegosParaVender="JuegosParaVender"></lista>
+    <lista :Juegos="Juegos" :totalJuegosstock="totalJuegosstock"></lista>
+    </div>
 </div>
 </template>
 
@@ -16,10 +18,10 @@ export default {
     },
     computed: {
         ...mapState(['Juegos']),
-        ...mapGetters(['totalJuegos','JuegosParaVender']),
+        ...mapGetters(['totalJuegos','JuegosParaVender', 'totalJuegosstock']),
     },
     methods: {
-        // -- Metodos
+    
     },
      components: {
          'lista':lista
@@ -28,5 +30,16 @@ export default {
 </script>
 
 <style scoped>
-    
+        .ventas{
+        text-align:left;
+        display:flex;
+        flex-direction:column;
+        width:400px;
+        justify-content:center;
+        margin:auto ;
+        margin-top:50px;
+    }
+    h1{
+        text-align:center
+    }
 </style>

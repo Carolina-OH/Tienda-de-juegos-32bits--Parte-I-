@@ -18,6 +18,10 @@ export default new Router({
             component:Inicio
         },
         {
+            path:'/',
+            redirect:'/inicio'
+        },
+        {
             path:'/busquedas',
             name:'busquedas',
             component:busquedas

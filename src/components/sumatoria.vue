@@ -6,7 +6,8 @@
       <div>Codigo:{{juego.codigo}} - Nombre:{{juego.nombre}} - Precio: ${{juego.precio}} </div>
     </li>
     </ul>
-    Monto total de ventas:
+
+    <p>Monto total de ventas:</p>
     </div>
 </template>
 
@@ -30,5 +31,7 @@ export default {
 </script>
 
 <style scoped>
-    
+    p{
+        margin-bottom:100px;
+    }
 </style>
